@@ -40,15 +40,21 @@
 // a 128x32 display will not need a max code size of 12 nor a palette
 // with 256 entries
 //
+#ifndef MAX_CODE_SIZE
 #define MAX_CODE_SIZE 12
+#endif
+#ifndef MAX_COLORS
 #define MAX_COLORS 256
+#endif
 #define LZW_BUF_SIZE (6*MAX_CHUNK_SIZE)
 #define LZW_HIGHWATER (4*MAX_CHUNK_SIZE)
+#ifndef MAX_WIDTH
 #ifdef __LINUX__
 #define MAX_WIDTH 2048
 #else
 #define MAX_WIDTH 320
 #endif // __LINUX__
+#endif // MAX_WIDTH
 // This buffer is used to store the pixel sequence in reverse order
 // it needs to be large enough to hold the longest possible
 // sequence (1<<MAX_CODE_SIZE)

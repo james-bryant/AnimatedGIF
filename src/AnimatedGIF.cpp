@@ -191,7 +191,7 @@ void AnimatedGIF::begin(unsigned char ucPaletteType)
 int AnimatedGIF::playFrame(bool bSync, int *delayMilliseconds, void *pUser)
 {
 int rc;
-#if !defined( __MACH__ ) && !defined( __LINUX__ )
+#if !defined(PICO_BUILD) && !defined( __MACH__ ) && !defined( __LINUX__ )
 long lTime = millis();
 #endif
 
@@ -225,7 +225,7 @@ long lTime = millis();
     // Return 1 for more frames or 0 if this was the last frame
     if (bSync)
     {
-#if !defined( __MACH__ ) && !defined( __LINUX__ ) 
+#if !defined(PICO_BUILD) && !defined( __MACH__ ) && !defined( __LINUX__ ) 
         lTime = millis() - lTime;
         if (lTime < _gif.iFrameDelay) // need to pause a bit
            delay(_gif.iFrameDelay - lTime);
